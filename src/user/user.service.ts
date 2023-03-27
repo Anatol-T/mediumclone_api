@@ -45,6 +45,10 @@ export class UserService {
     )
   }
 
+  findById(id: number): Promise<UserEntity> {
+    return this.userRepository.findOne({ where: { id } })
+  }
+
   async login(loginUserDto: LoginUserDto): Promise<UserEntity> {
     const user = await this.userRepository.findOne({
       where: { email: loginUserDto.email },
